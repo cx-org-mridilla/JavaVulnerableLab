@@ -38,7 +38,7 @@ jobs:
         break_build: false
         scanners: sca
         bug_tracker: GITHUBPULL
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="https://github.com/CheckmarxDev/JavaVulnerableLab.git" --cx-flow.filterSeverity --cx-flow.filterCategory
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="https://github.com/CheckmarxDev/JavaVulnerableLab.git" --cx-flow.filterSeverity --cx-flow.filterCategory --merge-id=${CI_MERGE_REQUEST_IID}
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
