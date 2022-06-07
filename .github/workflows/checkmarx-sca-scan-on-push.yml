@@ -21,7 +21,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: myenvironment
+    environment: JavaVulnerableLab
     steps:
     - name: Checkout
       uses: actions/checkout@v2
