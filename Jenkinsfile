@@ -4,7 +4,8 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn --version'
-                sh 'mvn -B -DskipTests clean package'
+                
+                checkmarxASTScanner additionalOptions: '--file-source https://github.com/mridilla/JavaVulnerableLab.git', baseAuthUrl: '', branchName: 'master', checkmarxInstallation: 'AST_INTERFACE', credentialsId: '', projectName: 'mridilla/JavaVulnerableLab', serverUrl: '', tenantName: '', useOwnAdditionalOptions: true
             }
         }
     }
