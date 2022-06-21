@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          
+      - name: Checkmarx AST Github Action
+        # You may pin to the exact commit or the version.
+        # uses: Checkmarx/ast-github-action@b1af61fa73f69f700c7c25d9e8eb79283e22bdc2
+        uses: Checkmarx/ast-github-action@2.0.6
+        with:
+          # Provide the AST portal URL
+          base_uri: https://ast.checkmarx.net
+          # Provide the Tenant for AST portal URL
+          cx_tenant: dp_wp_na
+          # Client ID for AST portal authentication
+          cx_client_id: RidillaGitHub
+          # Secret key for AST portal authentication
+          cx_client_secret: Secret
+          # Select a Checkmarx Project Name
+          project_name: mridilla/JavaVulnerableLab # optional, default is ${{ github.repository }}
+          # Branch name
+          branch: master # optional, default is ${{ github.head_ref || github.ref }}
+          # GitHub API Token
+          github_token: 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 # optional, default is ${{ github.token }}
+          # Additional parameters for AST scan
+          additional_params: --file-filter !readme --report-format sarif --output-name results # optional, default is 
