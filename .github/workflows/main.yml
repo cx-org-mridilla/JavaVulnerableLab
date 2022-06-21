@@ -45,9 +45,9 @@ jobs:
           # Provide the Tenant for AST portal URL
           cx_tenant: dp_wp_na
           # Client ID for AST portal authentication
-          cx_client_id: RidillaGitHub
+          cx_client_id: ${{ secrets.CLIENT_ID }}
           # Secret key for AST portal authentication
-          cx_client_secret: Secret
+          cx_client_secret: ${{ secrets.SECRET }}
           # Select a Checkmarx Project Name
           project_name: mridilla/JavaVulnerableLab # optional, default is ${{ github.repository }}
           # Branch name
