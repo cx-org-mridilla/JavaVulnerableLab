@@ -53,6 +53,6 @@ jobs:
           # Branch name
           branch: master # optional, default is ${{ github.head_ref || github.ref }}
           # GitHub API Token
-          github_token: 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 # optional, default is ${{ github.token }}
+          github_token: ${{ github.token }}  # optional, default is ${{ github.token }}
           # Additional parameters for AST scan
           additional_params: --file-filter !readme --report-format sarif --output-name results # optional, default is 
