@@ -35,6 +35,7 @@ public class UploadObject {
         } catch (SdkClientException e) {
             // Amazon S3 couldn't be contacted for a response, or the client
             // couldn't parse the response from Amazon S3.
+	    // testing.
             e.printStackTrace();
         }
     }
