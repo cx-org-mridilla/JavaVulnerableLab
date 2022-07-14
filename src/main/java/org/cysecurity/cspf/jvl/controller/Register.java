@@ -54,6 +54,7 @@ public class Register extends HttpServlet {
                     if(con!=null && !con.isClosed()) {
                         // add a comment here by Mike R
                     	// more comments!
+                    	// and even more comments -- right now 7/14/2022
                     	String insertString = "insert into users(?,?,?,?,?,?,?,?)";
                         PreparedStatement insertUsers = con.prepareStatement(insertString);
                         
