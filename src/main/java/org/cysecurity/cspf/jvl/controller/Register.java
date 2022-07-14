@@ -52,7 +52,7 @@ public class Register extends HttpServlet {
             try
              {
                     if(con!=null && !con.isClosed()) {
-                        // add a comment here by Mike R
+                        // add a comment here by Mike R           	                   
                     	String insertString = "insert into users(?,?,?,?,?,?,?,?)";
                         PreparedStatement insertUsers = con.prepareStatement(insertString);
                         
@@ -75,7 +75,8 @@ public class Register extends HttpServlet {
                         insertUserMessage.setString(3, "Hi");
                         insertUserMessage.setString(4, "Hi<br/> This is admin of this page. <br/> Welcome to Our Forum");
                         
-                        insertUserMessage.executeUpdate();          
+                        insertUserMessage.executeUpdate();     
+                        // MORE COMMENTS
                     	
                                    //Statement stmt = con.createStatement();  
                                   //stmt.executeUpdate("INSERT into users(username, password, email, About,avatar,privilege,secretquestion,secret) values ('"+user+"','"+pass+"','"+email+"','"+about+"','default.jpg','user',1,'"+secret+"')");
