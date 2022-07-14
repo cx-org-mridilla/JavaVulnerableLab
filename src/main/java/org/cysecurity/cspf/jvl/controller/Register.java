@@ -51,8 +51,8 @@ public class Register extends HttpServlet {
           }
             try
              {
-                    if(con!=null && !con.isClosed())
-                               {
+                    if(con!=null && !con.isClosed()) {
+                        // add a comment here by Mike R
                     	String insertString = "insert into users(?,?,?,?,?,?,?,?)";
                         PreparedStatement insertUsers = con.prepareStatement(insertString);
                         
