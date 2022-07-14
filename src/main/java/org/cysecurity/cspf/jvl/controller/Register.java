@@ -53,10 +53,33 @@ public class Register extends HttpServlet {
              {
                     if(con!=null && !con.isClosed())
                                {
-                                  
-                                   Statement stmt = con.createStatement();  
-                                  stmt.executeUpdate("INSERT into users(username, password, email, About,avatar,privilege,secretquestion,secret) values ('"+user+"','"+pass+"','"+email+"','"+about+"','default.jpg','user',1,'"+secret+"')");
-                                       stmt.executeUpdate("INSERT into UserMessages(recipient, sender, subject, msg) values ('"+user+"','admin','Hi','Hi<br/> This is admin of this page. <br/> Welcome to Our Forum')");
+                    	String insertString = "insert into users(?,?,?,?,?,?,?,?)";
+                        PreparedStatement insertUsers = con.prepareStatement(insertString);
+                        
+                        insertUsers.setString(1, user);
+                        insertUsers.setString(2, pass);
+                        insertUsers.setString(3, email);
+                        insertUsers.setString(4, about);
+                        insertUsers.setString(5, "default.jpg");
+                        insertUsers.setString(6, "user");
+                        insertUsers.setInt(7, 1);
+                        insertUsers.setString(8,secret);
+                        
+                        insertUsers.executeUpdate();
+                        
+                        String insertStringUserMessages = "insert into UserMessages(?,?,?,?)";
+                        PreparedStatement insertUserMessage = con.prepareStatement(insertStringUserMessages);
+                        
+                        insertUserMessage.setString(1, user);
+                        insertUserMessage.setString(2, "admin");
+                        insertUserMessage.setString(3, "Hi");
+                        insertUserMessage.setString(4, "Hi<br/> This is admin of this page. <br/> Welcome to Our Forum");
+                        
+                        insertUserMessage.executeUpdate();          
+                    	
+                                   //Statement stmt = con.createStatement();  
+                                  //stmt.executeUpdate("INSERT into users(username, password, email, About,avatar,privilege,secretquestion,secret) values ('"+user+"','"+pass+"','"+email+"','"+about+"','default.jpg','user',1,'"+secret+"')");
+                                  //     stmt.executeUpdate("INSERT into UserMessages(recipient, sender, subject, msg) values ('"+user+"','admin','Hi','Hi<br/> This is admin of this page. <br/> Welcome to Our Forum')");
              
                                     response.sendRedirect("index.jsp");
                                     
