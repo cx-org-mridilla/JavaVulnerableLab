@@ -39,6 +39,7 @@ public class EmailCheck extends HttpServlet {
             throws ServletException, IOException {
          response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        // mike comments
         try {
                Connection con=new DBConnect().connect(getServletContext().getRealPath("/WEB-INF/config.properties"));
                String email=request.getParameter("email").trim();
