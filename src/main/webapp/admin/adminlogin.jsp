@@ -8,6 +8,7 @@
 if(request.getParameter("Login")!=null)
 {
      Connection con=new DBConnect().connect(getServletContext().getRealPath("/WEB-INF/config.properties"));
+     // this is a comment!!!
      String user=request.getParameter("username");
      String pass=HashMe.hashMe(request.getParameter("password")); //Hashed Password 
      try
